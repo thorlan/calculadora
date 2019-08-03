@@ -43,6 +43,14 @@ public class CalculadoraTest {
 		int resultado = calc.add("1,2,3");
 		assertEquals(resultado, 6);
 	}
-
+	
+	@Test
+	public void deveReceberUmaStringComMaisDeDoisNumerosSeparadosPorVirgulaECaracteresEspeciaisEDevolverASoma(){
+		
+		Calculadora calc = new Calculadora();
+		int resultado = calc.add("1\n2,3");
+		assertEquals(resultado, 6);
+	}
+	
 	
 }

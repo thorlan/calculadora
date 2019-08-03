@@ -15,6 +15,7 @@ public class Calculadora {
 		} else if (valorString.length() == 1) {
 			valor = Integer.parseInt(valorString);
 		} else {
+			valorString = valorString.replace("\n", ",");
 			String[] valorArray = valorString.split(",");
 			for (String item : valorArray) {
 				valor += Integer.parseInt(item);
