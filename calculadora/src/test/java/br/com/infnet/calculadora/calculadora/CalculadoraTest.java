@@ -13,7 +13,7 @@ public class CalculadoraTest {
 	}
 	
 	@Test
-	public void deveReceberUmaStringVaziaEDevolverZero(){
+	public void deveReceberUmaStringVaziaEDevolverZero() throws Exception{
 		
 		Calculadora calc = new Calculadora();
 		int resultado = calc.add("");
@@ -21,7 +21,7 @@ public class CalculadoraTest {
 	}
 	
 	@Test
-	public void deveReceberUmaStringComUmNumeroEDevolverASoma(){
+	public void deveReceberUmaStringComUmNumeroEDevolverASoma() throws Exception{
 		
 		Calculadora calc = new Calculadora();
 		int resultado = calc.add("1");
@@ -29,7 +29,7 @@ public class CalculadoraTest {
 	}
 	
 	@Test
-	public void deveReceberUmaStringComDoisNumerosSeparadosPorVirgulaEDevolverASoma(){
+	public void deveReceberUmaStringComDoisNumerosSeparadosPorVirgulaEDevolverASoma() throws Exception{
 		
 		Calculadora calc = new Calculadora();
 		int resultado = calc.add("1,2");
@@ -37,7 +37,7 @@ public class CalculadoraTest {
 	}
 
 	@Test
-	public void deveReceberUmaStringComMaisDeDoisNumerosSeparadosPorVirgulaEDevolverASoma(){
+	public void deveReceberUmaStringComMaisDeDoisNumerosSeparadosPorVirgulaEDevolverASoma() throws Exception{
 		
 		Calculadora calc = new Calculadora();
 		int resultado = calc.add("1,2,3");
@@ -45,7 +45,7 @@ public class CalculadoraTest {
 	}
 	
 	@Test
-	public void deveReceberUmaStringComMaisDeDoisNumerosSeparadosPorVirgulaECaracteresEspeciaisEDevolverASoma(){
+	public void deveReceberUmaStringComMaisDeDoisNumerosSeparadosPorVirgulaECaracteresEspeciaisEDevolverASoma() throws Exception{
 		
 		Calculadora calc = new Calculadora();
 		int resultado = calc.add("1\n2,3");
@@ -53,7 +53,7 @@ public class CalculadoraTest {
 	}
 	
 	@Test
-	public void deveReceberUmaStringComMaisDeDoisNumerosSeparadosPorVirgulaEOutrosDelimitadoresEDevolverASoma() {
+	public void deveReceberUmaStringComMaisDeDoisNumerosSeparadosPorVirgulaEOutrosDelimitadoresEDevolverASoma() throws Exception {
 		
 		Calculadora calc = new Calculadora();
 		int resultado = calc.add("//;\n1;2");
@@ -61,5 +61,11 @@ public class CalculadoraTest {
 		
 	}
 	
-	
+	@Test(expected = Exception.class)
+	public void deveReceberUmaStringComNumerosNegativosERetornarExcecao() throws Exception {
+		
+		Calculadora calc = new Calculadora();
+		int resultado = calc.add("-1,-2,-3");
+	}
+		
 }

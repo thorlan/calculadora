@@ -6,10 +6,11 @@ public class Calculadora {
 
 	}
 
-	public int add(String valorString) {
+	public int add(String valorString) throws Exception {
 		String[] valorArray;
 
 		int valor = 0;
+		int i = 0;
 
 		if (valorString.equals("")) {
 			return valor;
@@ -24,16 +25,35 @@ public class Calculadora {
 				valorString = valorString.replace("//", "0");
 				valorString = valorString.replace("\n", delimitador);
 				valorArray = valorString.split(delimitador);
-				for (int i = 2; i < valorArray.length; i++) {
-					valor += Integer.parseInt(valorArray[i]);
-				}
+				i = 2;
 
 			} else {
 				valorString = valorString.replace("\n", delimitador);
 				valorArray = valorString.split(delimitador);
-				for (String item : valorArray) {
-					valor += Integer.parseInt(item);
+				i = 0;
+			}
+			boolean lancarExcecao = false;
+			int positivos = 0;
+			int negativos = 0;
+			for (i = i; i < valorArray.length; i++) {
+
+				if (Integer.parseInt(valorArray[i]) < 0) {
+					negativos++;
+					lancarExcecao = true;
+
+				} else {
+					negativos++;
 				}
+				valor += Integer.parseInt(valorArray[i]);
+			}
+
+			if (lancarExcecao) {
+				if (negativos > positivos) {
+					for (String string : valorArray) {
+						System.out.println(string);
+					}
+				}
+				throw new Exception("Números negativos não permitidos");
 			}
 
 		}
