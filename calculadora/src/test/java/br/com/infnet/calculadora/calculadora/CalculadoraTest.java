@@ -52,5 +52,14 @@ public class CalculadoraTest {
 		assertEquals(resultado, 6);
 	}
 	
+	@Test
+	public void deveReceberUmaStringComMaisDeDoisNumerosSeparadosPorVirgulaEOutrosDelimitadoresEDevolverASoma() {
+		
+		Calculadora calc = new Calculadora();
+		int resultado = calc.add("//;\n1;2");
+		assertEquals(resultado, 3);
+		
+	}
+	
 	
 }
