@@ -8,19 +8,19 @@ public class Calculadora {
 
 	public int add(String valorString) {
 
-		int valor;
+		int valor = 0 ;
 
 		if (valorString.equals("")) {
-			valor = 0;
+			return valor;
 		} else if (valorString.length() == 1) {
 			valor = Integer.parseInt(valorString);
 		} else {
-			int posicaoDaVirgula = valorString.indexOf(',');
-			int primeiroValor = Integer.parseInt(valorString.substring( (posicaoDaVirgula -1) , posicaoDaVirgula ));
-			int segundoValor = Integer.parseInt(valorString.substring(posicaoDaVirgula + 1));
-			valor = primeiroValor + segundoValor;
+			String[] valorArray = valorString.split(",");
+			for (String item : valorArray) {
+				valor += Integer.parseInt(item);
+			}
 		}
-
+		
 		return valor;
 	}
 }
